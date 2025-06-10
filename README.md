@@ -10,3 +10,13 @@ Some CROCO code and implementations for wave-resolving simulations.
 
 ### 03-frequencydependantangle
 - Extend the wavemaker capacity to have frequency-dependant wave angles.
+
+### To do: 
+- [ ] Energy-based frequency decomposition
+- [ ] Online particle tracking
+- [ ] Frequency-dependant angles
+- [ ] Spectrum input file: clean
+- [ ] Validate infragravity waves?
+- [ ] OBC with angle (land masking?)
+- [ ] Fix WAVE_MAKER_EAST
+- [ ] Fix stations and float when NO_TRACER
