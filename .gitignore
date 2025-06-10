@@ -7,4 +7,4 @@ namelist_*
 ncjoin
 partit
 *.nc
-
+*_.f1
