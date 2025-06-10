@@ -1418,8 +1418,9 @@
 # define SOLVE3D
 # define NEW_S_COORD
 # define UV_ADV
-# define NO_TRACER
-# define NO_TEMPERATURE
+# define TEMPERATURE
+!# define NO_TRACER
+!# define NO_TEMPERATURE
 # undef  PASSIVE_TRACER
 # undef  ANA_TIDES
 # define NBQ
@@ -1457,6 +1458,8 @@
 # define AVERAGES
 # define AVERAGES_K
 # undef  DIAGNOSTICS_EDDY
+# define STATIONS
+# define ALL_SIGMA
 
 #elif defined SWASH
 /*
