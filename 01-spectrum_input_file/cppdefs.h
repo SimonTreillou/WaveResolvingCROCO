@@ -1427,7 +1427,7 @@
 # define LIMIT_BSTRESS
 # define WAVE_MAKER
 # define WAVE_MAKER_SPECTRUM
-!# define WAVE_MAKER_FILE
+# define WAVE_MAKER_FILE
 # define WAVE_MAKER_DSPREAD
 # define UV_HADV_WENO5
 # define UV_VADV_WENO5

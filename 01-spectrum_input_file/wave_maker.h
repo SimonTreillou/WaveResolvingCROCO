@@ -178,10 +178,12 @@
 !
         if (FIRST_TIME_STEP) then
 
-# if defined WAVE_MAKER_FILE
-          open(117,file='input_spectrum.txt',form='formatted',status='old')
+# if defined WAVE_MAKER_FILEXX
+          open(unit=117,file="input_spectrum.txt",form='formatted',
+     &         action='read',access='sequential',status='old')
           do iw=1,Nfrq
             read(117,*) wf_bry(iw), wa_bry(iw)
+            write(*,*) wf_bry(iw)
             khd=h0*wf_bry(iw)**2/g   ! wavenumber
             kh=sqrt( khd*khd+khd/(1.+khd*(K1+khd*(K2+khd*(K3+khd*(K4+
      &                                       khd*(K5+K6*khd)))))) )
@@ -200,7 +202,7 @@
             wk_bry(iw)=kh/h0
           enddo
 # endif
-# ifdef WAVE_MAKER_JONSWAP
+# ifdef WAVE_MAKER_JONSWAPXX
           sumspec=0.
           do iw=1,Nfrq
             sigma=0.5*( 0.09*(1.+sign(1.,wf_bry(iw)-wf))+
@@ -224,6 +226,7 @@
           open(117,file='input_spectrum.txt',form='formatted',status='old')
           do iw=1,Nfrq
             read(117,*) wf_bry(iw), wa_bry(iw)
+            wf_bry(iw)=wf_bry(iw)*2*pi
             khd=h0*wf_bry(iw)**2/g   ! wavenumber
             kh=sqrt( khd*khd+khd/(1.+khd*(K1+khd*(K2+khd*(K3+khd*(K4+
      &                                       khd*(K5+K6*khd)))))) )
