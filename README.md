@@ -20,3 +20,4 @@ Some CROCO code and implementations for wave-resolving simulations.
 - [ ] OBC with angle (land masking?)
 - [ ] Fix WAVE_MAKER_EAST
 - [ ] Fix stations and float when NO_TRACER
+- [ ] progressive resolution
