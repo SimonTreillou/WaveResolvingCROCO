@@ -11,6 +11,10 @@ Some CROCO code and implementations for wave-resolving simulations.
 ### 03-frequencydependantangle
 - Extend the wavemaker capacity to have frequency-dependant wave angles.
 
+### 04-crocowithopendrift
+- Add first try with OpenDrift. Routines adds lon/lat/angle and masks to files.
+
+
 ### To do: 
 - [ ] Energy-based frequency decomposition
 - [ ] Online particle tracking
