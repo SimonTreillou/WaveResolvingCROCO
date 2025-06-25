@@ -13,7 +13,9 @@ Some CROCO code and implementations for wave-resolving simulations.
 
 ### 04-crocowithopendrift
 - Add first try with OpenDrift. Routines adds lon/lat/angle and masks to files.
-
+- 
+### 05-onlinevorticitybudget
+- Add first try of online vorticity budget with CROCO.
 
 ### To do: 
 - [ ] Energy-based frequency decomposition
@@ -25,3 +27,5 @@ Some CROCO code and implementations for wave-resolving simulations.
 - [ ] Fix WAVE_MAKER_EAST
 - [ ] Fix stations and float when NO_TRACER
 - [ ] progressive resolution
+- [x] Online vorticity budget
+- [ ] Offline vorticity budget?
