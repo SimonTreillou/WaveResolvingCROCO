@@ -23,7 +23,7 @@ rate = np.mean(np.abs(ds.variables['vrt_rate'][tini:,:,:]),(0,1))
 #wind = np.mean(ds.variables['vrt_wind'][tini:,:,:],(0,1)) # 0 in this simulation
 drag = np.mean(np.abs(ds.variables['vrt_drag'][tini:,:,:]),(0,1))
 fast = np.mean(np.abs(ds.variables['vrt_fast'][tini:,:,:]),(0,1))
-vars_rhs = ['vrt_xadv','vrt_yadv','vrt_hdiff','vrt_cor','vrt_prsgrd','vrt_hmix','vrt_vmix','vrt_nudg','vrt_wind','vrt_drag','vrt_fast']
+vars_rhs = ['vrt_xadv','vrt_yadv','vrt_cor','vrt_prsgrd','vrt_hmix','vrt_vmix','vrt_nudg','vrt_wind','vrt_fast']
 rhs = 0
 for var in vars_rhs:
     rhs = rhs + np.mean(ds.variables[var][tini:,:,:],(0,1))
@@ -38,7 +38,7 @@ plt.show()
 
 plt.figure(2,dpi=300)
 #plt.plot(xu,rate,label=r"$\partial \omega / \partial t$")
-plt.plot(xu,drag,label="Drag")
+#plt.plot(xu,drag,label="Drag") # already included in vmix
 #plt.plot(xu,fast,label="Fast")
 plt.plot(xu,vmix,label="Vertical mix.")
 plt.plot(xu,prsgrd,label="Prs. grad.")
