@@ -1,4 +1,4 @@
-!======================================================================
+@!======================================================================
 ! CROCO is a branch of ROMS developped at IRD, INRIA, 
 ! Ifremer, CNRS and Univ. Toulouse III  in France
 ! The two other branches from UCLA (Shchepetkin et al)
@@ -1413,7 +1413,8 @@
 !      Tracer dispersion by surfzone eddies: assessing 
 !      the impact of undertow vertical shear
 */
-# define  MPI
+# undef  MPI
+# define OPENMPI
 # undef  NC4PAR
 # define SOLVE3D
 # define NEW_S_COORD
@@ -1458,7 +1459,17 @@
 # define AVERAGES_K
 # undef  DIAGNOSTICS_EDDY
 # define FLOATS
-# define STATIONS
+# ifdef FLOATS
+#  undef  FLOATS_GLOBAL_ATTRIBUTES
+#  undef  IBM
+#  undef  RANDOM_WALK
+#  ifdef RANDOM_WALK
+#   define DIEL_MIGRATION
+#   define RANDOM_VERTICAL
+#   define RANDOM_HORIZONTAL
+#  endif
+# endif
+!# define STATIONS
 
 #elif defined SWASH
 /*
