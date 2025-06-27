@@ -1462,7 +1462,7 @@
 # ifdef FLOATS
 #  undef  FLOATS_GLOBAL_ATTRIBUTES
 #  undef  IBM
-#  undef  RANDOM_WALK
+#  define  RANDOM_WALK
 #  ifdef RANDOM_WALK
 #   define DIEL_MIGRATION
 #   define RANDOM_VERTICAL
