@@ -10,7 +10,7 @@ S-coord: THETA_S,   THETA_B,    Hc (m)
            0.         0.        1.e16
 
 wave_maker:  amp [m], prd [s], ang [deg], ang spread [deg], freq spread (gamma)
-             0.24     13.       0.         30.               3.3 
+             0.24     13.       0.         2.0               3.3 
 
 grid:  filename
                           rip_grd.nc 
@@ -81,11 +81,11 @@ diags_eddy_average_fields: diags_eddy_avg
                             T
 
 diags_vrt:   ldefdiags_vrt, nwrtdiags_vrt, nrpfdiags_vrt /filename
-                   T          10        0
+                   T          1040        0
                 rip_diags_vrt.nc
 
 diags_vrt_avg: ldefdiags_vrt_avg  ntsdiags_vrt_avg  nwrtdiags_vrt_avg  nprfdiags_vrt_avg /filename
-               T          1          10          0
+               T          1          1040          0
              rip_diags_vrt_avg.nc
            
 diags_vrt_history_fields: diags_vrt
@@ -93,5 +93,4 @@ diags_vrt_history_fields: diags_vrt
 
 diags_vrt_average_fields: diags_vrt_avg
                             T
-vertical_mixing: Akv_bak, Akt_bak [m^2/sec]
-                 0.e-6    0.e-6
+

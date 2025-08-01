@@ -24,26 +24,26 @@ restart:          NRST, NRPFRST / filename
                           rip_rst.nc
 
 history: LDEFHIS, NWRT, NRPFHIS / filename
-            T     1040        0
+            T     20        0
                           rip_his.nc
 
 averages: NTSAVG, NAVG, NRPFAVG / filename
-            1     1040         0
+            1      260       0
                           rip_avg.nc
 
 primary_history_fields: zeta UBAR VBAR  U  V   wrtT(1:NT)
                           T    T   T    T  T    10*T
 auxiliary_history_fields:   rho Omega W  Akv  Akt  Aks Visc3d Diff3d  HBL HBBL Bostr Wstr Ustr Vstr Shfl rsw rlw lat sen Hm HEL BIOL
-                             F   F    T   F    F    F   F      F       F   F    F     20*F
+                             F   F    T   F    F    F   F      F       F   F    T     20*F
 gls_history_fields:   TKE  GLS  Lscale
                        T     F    F
 
 primary_averages: zeta UBAR VBAR  U  V   wrtT(1:NT)
                    T    T    T    T  T   10*T 
 auxiliary_averages:   rho Omega W  Akv  Akt  Aks Visc3d Diff3d  HBL HBBL Bostr Wstr Ustr Vstr Shfl rsw rlw lat sen Hm HEL BIOL
-                       F   F    T   T    F    F   F      F       F   F    F     20*F
+                       F   F    T   T    F    F   F      F       F   F    T     20*F
 gls_averages:   TKE  GLS  Lscale
-                 T     F    F
+                 T     F    T
 
 rho0:
       1024.4
@@ -70,10 +70,10 @@ nudg_cof:    TauT_in, TauT_out, TauM_in, TauM_out  [days for all]
               1.e-5     1.e-2    1.e-5    1.e-2
 
 diags_eddy:   ldefdiags_eddy, nwrtdiags_eddy, nrpfdiags_eddy /filename
-                   F           1040                  0
+                   F           260                  0
                                                rip_diags_eddy.nc
 diags_eddy_avg: ldefdiags_eddy_avg  ntsdiags_eddy_avg  nwrtdiags_eddy_avg  nprfdiags_eddy_avg /filename
-                   T                       1               1040                  0
+                   T                       1               260                  0
                                                rip_diags_eddy_avg.nc
 diags_eddy_history_fields: diags_eddy
                             F
@@ -81,11 +81,11 @@ diags_eddy_average_fields: diags_eddy_avg
                             T
 
 diags_vrt:   ldefdiags_vrt, nwrtdiags_vrt, nrpfdiags_vrt /filename
-                   T          10        0
+                   T          260        0
                 rip_diags_vrt.nc
 
 diags_vrt_avg: ldefdiags_vrt_avg  ntsdiags_vrt_avg  nwrtdiags_vrt_avg  nprfdiags_vrt_avg /filename
-               T          1          10          0
+               T          1          260          0
              rip_diags_vrt_avg.nc
            
 diags_vrt_history_fields: diags_vrt
@@ -93,5 +93,4 @@ diags_vrt_history_fields: diags_vrt
 
 diags_vrt_average_fields: diags_vrt_avg
                             T
-vertical_mixing: Akv_bak, Akt_bak [m^2/sec]
-                 0.e-6    0.e-6
+
