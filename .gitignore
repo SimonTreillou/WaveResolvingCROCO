@@ -9,3 +9,5 @@ partit
 *.nc
 *_.f1
 OldCommits
+.DS_Store
+.idea
