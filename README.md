@@ -7,6 +7,7 @@ Some CROCO code and implementations for wave-resolving simulations.
 
 ### 02-onlineparticletracking
 - Test of the module ```FLOATS``` in a wave-resolving simulation.
+- Deprecated now, and removed from the CROCO source code.
 
 ### 03-frequencydependantangle
 - Extend the wavemaker capacity to have frequency-dependant wave angles.
@@ -19,7 +20,7 @@ Some CROCO code and implementations for wave-resolving simulations.
 
 ### To do: 
 - [ ] Energy-based frequency decomposition
-- [ ] Online particle tracking
+- [x] Online particle tracking
 - [ ] Frequency-dependant angles
 - [ ] Spectrum input file: clean
 - [ ] Validate infragravity waves?
