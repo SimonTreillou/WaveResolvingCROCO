@@ -24,6 +24,9 @@ Some CROCO code and implementations for wave-resolving simulations.
 ### 07-modifiedonlinevorticitybudget
 - 3D vorticity budget implemented in CROCO (similar to DIAGNOSTICS_UV and DIAGNOSTICS_VRT, but with key DIAGNOSTICS_VRT3D)
 
+### 08-newvariableinstation
+- Add the possibility to record vorticity at one special point using the cppkey STATIONS.
+
 ### To do: 
 - [ ] Energy-based frequency decomposition
 - [x] Online particle tracking
