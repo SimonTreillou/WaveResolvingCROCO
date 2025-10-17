@@ -30,6 +30,7 @@ Some CROCO code and implementations for wave-resolving simulations.
 ### To do: 
 - [ ] Energy-based frequency decomposition
 - [x] Online particle tracking
+- [x] Offline particle tracking
 - [ ] Frequency-dependant angles
 - [ ] Spectrum input file: clean
 - [ ] Validate infragravity waves?
