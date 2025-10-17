@@ -718,7 +718,7 @@
       integer Nfrq0
       parameter (Nfrq0=50, Ndir=31, Nfrq=Nfrq0*Ndir)
 # else
-      parameter (Nfrq=50, Ndir=31)
+      parameter (Nfrq=300, Ndir=31)
 # endif
       real wf_bry(Nfrq), wk_bry(Nfrq), wa_bry(Nfrq)
       real wd_bry(Nfrq), wa_bry_d(Nfrq), wa_bry_f(Nfrq)

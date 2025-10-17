@@ -1,7 +1,7 @@
 1  STAtitle (a80)
 CROCO  - Station Location
 2  STAt0,  STAx0,  STAy0,  STAz0, STgrd, STAcoor
-    0.0    50      150     10     0       0   
+    0.0    30      150     10     0       0   
 99 END of station input data
 !
 !------------------------------------------------------------------------------

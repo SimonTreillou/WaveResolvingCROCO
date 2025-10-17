@@ -178,16 +178,23 @@
 !
         if (FIRST_TIME_STEP) then
 
-# if defined WAVE_MAKER_FILEXX
-          open(unit=117,file="input_spectrum.txt",form='formatted',
-     &         action='read',access='sequential',status='old')
+# if defined WAVE_MAKER_FILE
+          sumspec=0.
+          open(117,file="./input_spectrum.txt",
+     &            form='formatted',status='old')
           do iw=1,Nfrq
             read(117,*) wf_bry(iw), wa_bry(iw)
-            write(*,*) wf_bry(iw)
+            wa_bry(iw)=wa_bry(iw)
+            wf_bry(iw)=wf_bry(iw)*2*pi
             khd=h0*wf_bry(iw)**2/g   ! wavenumber
             kh=sqrt( khd*khd+khd/(1.+khd*(K1+khd*(K2+khd*(K3+khd*(K4+
      &                                       khd*(K5+K6*khd)))))) )
             wk_bry(iw)=kh/h0
+          enddo
+          df=wf_bry(2)-wf_bry(1)
+          do iw=1,Nfrq
+            wa_bry(iw)=wa_bry(iw)*df
+            sumspec=sumspec+wa_bry(iw)
           enddo
 # else
           fmin=0.2*wf  ! frequency spread
@@ -202,7 +209,7 @@
             wk_bry(iw)=kh/h0
           enddo
 # endif
-# ifdef WAVE_MAKER_JONSWAPXX
+# ifdef WAVE_MAKER_JONSWAP
           sumspec=0.
           do iw=1,Nfrq
             sigma=0.5*( 0.09*(1.+sign(1.,wf_bry(iw)-wf))+
@@ -220,18 +227,6 @@
             cff1=exp(-((wf_bry(iw)-wf)/0.05)**2)
             wa_bry(iw)=cff1
             sumspec=sumspec+cff1
-          enddo
-# elif defined WAVE_MAKER_FILE
-          sumspec=0.
-          open(117,file='input_spectrum.txt',form='formatted',status='old')
-          do iw=1,Nfrq
-            read(117,*) wf_bry(iw), wa_bry(iw)
-            wf_bry(iw)=wf_bry(iw)*2*pi
-            khd=h0*wf_bry(iw)**2/g   ! wavenumber
-            kh=sqrt( khd*khd+khd/(1.+khd*(K1+khd*(K2+khd*(K3+khd*(K4+
-     &                                       khd*(K5+K6*khd)))))) )
-            wk_bry(iw)=kh/h0
-            sumspec=sumspec+wa_bry(iw)
           enddo
 # endif
 # ifdef WAVE_MAKER_DSPREAD
@@ -256,9 +251,13 @@
           cff2=sumspec/cff1
           do jw=1,Nfrq
             wa_bry_d(jw)=wa_bry_d(jw)*cff2   ! Normalize dir spectrum
+#  if defined WAVE_MAKER_FILE
+            wa_bry(jw)=sqrt(wa_bry(jw)*2/2/pi*wa_bry_d(jw))
+#  else
             wa_bry_f(jw)=wa_bry(jw)/sumspec  ! Normalize frq spectrum
             wa_bry(jw)=wa*sqrt(wa_bry_f(jw)  ! Finalize amplitude to
      &                        *wa_bry_d(jw)) ! normalize wave energy
+#  endif
           enddo
 #  ifdef WAVE_MAKER_DSPREAD_PER
 !
@@ -326,13 +325,17 @@
           enddo
 
 # else
-          CALL RANDOM_SEED(SIZE=nseed)
+          CALL RANDOM_SEED(SIZE=Fnseed)
           ALLOCATE(seed(nseed))
           seed = 12345  ! Fix seed for reprocucibility
           CALL RANDOM_SEED(PUT=seed)
           call RANDOM_NUMBER(wpha_bry)  ! random phase
           do iw=1,Nfrq
+#  if defined WAVE_MAKER_FILE
+            wa_bry(iw)=sqrt(wa_bry(iw)*2/2/pi)   ! normalize
+#  else
             wa_bry(iw)=wa*sqrt(wa_bry(iw)/sumspec) ! normalize
+#  endif
             wpha_bry(iw)=wpha_bry(iw)*2.*pi
             wkx_bry(iw)=wk_bry(iw)*cos(wd)
             wky_bry(iw)=wk_bry(iw)*sin(wd)
