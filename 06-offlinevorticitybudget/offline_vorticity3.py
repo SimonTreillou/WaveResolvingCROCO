@@ -1,12 +1,17 @@
+#%%
 import numpy as np
 import xarray as xr
 import netCDF4 as nc
 import matplotlib.pyplot as plt
-from tools import u2rho,v2rho
+import sys
+sys.path.append('/Users/simon/Code/Projects/Tools')
+from Diagnostics.grid import u2rho,v2rho
+from Diagnostics.useful import wave_average
 
+#%%
 # === Load CROCO file ===
-ds = nc.Dataset("./06-offlinevorticitybudget/FLASH_RIP/rip_avg.nc")
-ds_his = nc.Dataset("./06-offlinevorticitybudget/FLASH_RIP/rip_his.nc")
+ds = nc.Dataset("./FLASH_RIP/rip_avg.nc")
+ds_his = nc.Dataset("./FLASH_RIP/rip_his.nc")
 ubar = ds.variables['ubar'][:,:,:]
 ubar = u2rho(ubar)
 vbar = ds.variables['vbar'][:,:,:]
@@ -24,15 +29,6 @@ dx = x[1]-x[0]
 dy = y[1]-y[0]
 
 #%% Compute vorticity
-def wave_average(var,dt=1,T=13):
-    N=int(T/dt)
-    T,M,L=var.shape
-    n = int(T / N)
-    var = var[:n * N, :, :]
-    reshaped = var.reshape(-1, N, M, L)  # reshape en 10 lignes de 10 colonnes
-    var_avg = reshaped.sum(axis=1) / N
-    return var_avg
-
 vort = v2rho((ubarhis[:,1:,:]-ubarhis[:,:-1,:])/dy) - u2rho((vbarhis[:,:,:1]-vbarhis[:,:,:-1])/dx)
 vort_avg=wave_average(vort)
 
