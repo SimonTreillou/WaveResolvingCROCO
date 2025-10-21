@@ -6,7 +6,7 @@ from scipy import signal
 import pandas as pd
 import sys
 sys.path.append('/Users/simon/Code/Projects/Tools')
-from Diagnostics.spectrum import welch_spectrum_CI,plot_CIbar_loglog
+from Diagnostics.spectrum import welch_spectrum_CI,plot_CIbar_loglog # pyright: ignore[reportMissingImports]
 
 #%% Load
 ds = nc.Dataset('./FLASH_RIP/stations.nc')
