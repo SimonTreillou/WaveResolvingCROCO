@@ -2,7 +2,7 @@ title:
         Flash rip test case
         
 time_stepping: NTIMES   dt[sec]  NDTFAST  NINFO
-               50000     0.05      5      10
+               100000     0.05      5      10
 time_stepping_nbq: NDTNBQ    CSOUND_NBQ    VISC2_NBQ
                      1          50          0.01 
 
@@ -10,7 +10,7 @@ S-coord: THETA_S,   THETA_B,    Hc (m)
            0.         0.        1.e16
 
 wave_maker:  amp [m], prd [s], ang [deg], ang spread [deg], freq spread (gamma)
-             0.24     13.       0.         10.               3.3 
+             0.24     13.       0.         30.               20.0 
 
 grid:  filename
                           rip_grd.nc 
@@ -114,7 +114,7 @@ diagnosticsM:   ldefdia   nwrtdia    nrpfdia /filename
 diagM_history_fields: diag_momentum(1:2)
                             T T
 stations: LDEFSTA, NSTA, NRPFSTA / inpname, hisname
-             T      20      0
+             T      10      0
                                     stations.in
      stations.nc
 station_fields:  Grdvar Temp Salt Rho Vel Vrt
